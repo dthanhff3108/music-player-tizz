@@ -1,0 +1,76 @@
+.contact-popup{
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 10;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    display: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.contact-popup.active{
+    display: flex;
+}
+.contact-main{
+    background-color: rgb(58, 58, 58);
+    width: 50%;
+    height: 70%;
+    padding: 20px;
+    border-radius: 12px;
+    position:relative;
+}
+.about-me p{
+    margin: 12px 0 12px 6px ;
+}
+.contact-main p:nth-child(1){
+    color: white;
+    font-family: 'Itim', cursive;
+    font-weight:600;
+    font-size: 20px;
+}
+.contact-main p:nth-child(2){
+    color: white;
+    font-family: 'Itim', cursive;
+    font-weight:600;
+    font-size: 16px;
+    
+}
+.contact-main p:nth-child(3){
+    color: white;
+    font-family: 'Itim', cursive;
+    font-weight:600;
+    font-size: 16px;
+}
+.contact-main p:nth-child(2) a{
+    text-decoration: none;
+    color: #f3a952
+}
+.contact-me{
+    display: flex;
+    flex-direction: column;
+}
+.contact-me a{
+    text-decoration: none;
+    color:#f3a952 ;
+    font-family: 'Itim', cursive;
+    display: flex;
+    align-items: center;
+    width: 60px;
+}
+.contact-me i{
+    font-size:26px;
+    color:#f3a952 ;
+    margin: 8px;
+}
+.close-contact-popup{
+    font-family: 'Itim', cursive;
+    position: absolute;
+    top: 6px;
+    right: 18px;
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+}
