@@ -137,7 +137,7 @@ source{
 }
 .handle{
     display: flex;
-    align-items: center;
+    align-items: end;
     margin-right: 36px;
 }
 .handle-item{
@@ -146,6 +146,7 @@ source{
 .full-scr,
 .avt{
     transition: all 0.3s;
+    
 }
 .full-scr:hover,
 .avt:hover{
@@ -190,7 +191,7 @@ source{
 }
 .switch-mode input:checked + .slider:after{
     transform: translateX(-28px);
-    background-image: url("https://lofi.co/static/media/day.d259f96b.svg");
+    background-image: url("../icon/dark-mode-icon/night.svg");
 
 }
 .switch-mode input:checked + .slider:before{
@@ -228,7 +229,7 @@ source{
     bottom: -8px;
     right: -38px;
     background-repeat: no-repeat;
-    background-image: url("https://lofi.co/static/media/night.5e06c080.svg");
+    background-image: url("../icon/dark-mode-icon/day.svg");
 }
 
 /* control */
