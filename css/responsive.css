@@ -1,0 +1,132 @@
+@media screen and (max-width: 650px){
+    .app{
+        overflow: hidden;
+    }
+    .nav{
+        display: none;
+    }
+    .logo{
+        width: 50%;
+        height: 50%;
+    }
+    .author p {
+        font-weight: 550;
+        color : rgba(211, 211, 211, 0.4);
+        margin-right: 10px;
+        font-size: 8px;
+    }
+    .author img{
+        width:40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+    .control{
+        bottom:15%;
+    }
+    .author{
+        bottom: 5%;
+    }
+    .header{
+        transform: translateY(0);
+    }
+    .menu{
+        right: 6%;
+    }
+    .tablet-menu.active{
+        display: block;
+        width: 250px;
+    }
+    .options{
+        padding: 12px 10px;
+    }
+    .options p{
+        font-size:10px;
+        margin-bottom: 10px;
+    }
+    .music-type{
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .type{
+        padding: 8px;
+        font-size: 8px;
+        border-radius: 8px;
+        width:44px;
+        height:44px;
+        margin: 0 3px 15px;
+        display: flex;
+        justify-content:space-between;
+    }
+    .volume{
+        margin: 0 6px 15px 6px;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+    .volume-range-tracked{
+        position: absolute;
+        top: 3px;
+        left: 30px;
+        width:105px;
+        height:10px;
+        background-color: var(--main-color);
+        border-radius:12px;
+        z-index: -1;
+    }
+    .volume-range::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 15px; 
+        height: 15px; 
+        background: white; 
+        border-radius: 50%;
+        margin-top: -2px;
+        z-index: 1000;
+    }
+    .noise{
+        margin-right: 6px;
+        margin-bottom: 15px;
+    }
+    .noise-type{
+        margin-top: 6px;
+    }
+    .set{
+        margin: 8px ;
+        object-fit: contain;
+        overflow: hidden;
+        width:218px;
+        height: 130px;
+        border-radius: 18px;
+    }
+}
+@media screen and (max-width: 829px)  {
+    .handle-pc{
+        display: none;
+    }
+    .handle-phone{
+        display: flex;
+        align-items:center;
+        font-size: 16px;
+        color : white;
+        padding:6px 8px;
+        background-color : rgb(15 15 15 / 0.4);
+        border-radius: 4px;
+    }
+    .item-text{
+        font-size: 14px; 
+    }
+    .tablet-menu{
+        display: block;
+    }
+}
+@media screen and (max-width: 1024px) and (min-width: 830px) {
+    .item-text{
+        font-size: 14px; 
+    }
+    .handle button{
+        font-size:8px;
+    }
+    .handle-item{
+        margin: 14px;
+    }
+}

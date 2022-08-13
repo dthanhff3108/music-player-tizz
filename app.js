@@ -1,6 +1,13 @@
 const $ = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
 
+const app = $(".app")
+
+const headerContainer = $(".header")
+const controlContainer = $(".control")
+const menuContainer = $(".menu")
+const authorContainer = $(".author")
+
 const menuItem = $$(".menu-item")
 const lightBg = $(".light-bg")
 const switchMode = $(".switch-mode")
@@ -9,7 +16,7 @@ const backGround = $(".background")
 const mousePointer = $(".mouse-cursor")
 
 const fullScr = $(".full-scr")
-const app = $(".app")
+const shareBtn = $$(".share")
 
 const imgAuthor = $(".author img")
 const mainAudio = $(".audio-main")
@@ -28,13 +35,23 @@ const shuffleBtn = $(".shuff-btn")
 
 const volumeRange = $(".volume-range")
 const volumeTracked = $(".volume-range-tracked")
+
 const volumeFire = $(".fire")
+const volumeFireIcon = $(".fire-icon  > path")
+
 const volumeTraffic = $(".traffic")
+const volumeTrafficIcon = $(".traffic-icon  > path")
+
 const volumeRain = $(".rain")
+const volumeRainIcon = $(".rain-icon  > path")
 
 const contactPopup = $(".contact-popup")
 const contactNav  = $(".item-contact")
 const contactPopupClose = $(".close-contact-popup")
+
+const tabletMenu = $(".tablet-menu")
+const closeTabletMenuBtn = $(".close-tablet-menu")
+const openTabletMenuBtn  = $(".handle-phone")
 
 const playerMusic = {
     currentIndex :0,
@@ -159,16 +176,79 @@ const playerMusic = {
             }   
         }
     },
-    handleClick(){
-        const _this = this
-        
-        window.onload = ()=>{
-            setTimeout(()=>$(".load-background").style.display ="none",000)
+    showTabs(bool){
+        if(bool){
+            headerContainer.style.transform = "translateY(0)"
+            controlContainer.style.bottom = "8%"
+            menuContainer.style.right = "20px"
+            authorContainer.style.bottom = "18px"
         }
+        else{
+            headerContainer.style.transform = "translateY(-100%)"
+            controlContainer.style.bottom = "-100%"
+            menuContainer.style.right = "-200%"
+            authorContainer.style.bottom = "-100%"
+        }
+    },
+    handleClick(e){
+        const _this = this
+        let isShowTab = false
+        let timeOut
+        // Show animation Loading
+        window.onload = ()=>{
+            setTimeout(()=>$(".load-background").style.display ="none",000) // fake loading ^.^
+        }
+        window.onclick = (e)=>{
+            if(e.target.closest(".menu")!==$(".menu")){
+                if($(".menu-item.active")){
+                    $(".menu-item.active").classList.remove("active")
+                }
+            }
+        }
+        // toggle tab
+        window.onmouseover = ((e) =>{
+            // Check device type
+                if(document.body.offsetWidth > 650){
+                    if(timeOut){
+                        clearTimeout(timeOut)
+                    }
+                    if(isShowTab===false){
+                        isShowTab = true
+                        _this.showTabs(true)
+                    }
+                }
+            }
+        )
+        window.onmouseout = ((e) =>{
+            // Check device type
+            if(document.body.offsetWidth > 650){
+                if(isShowTab===true){
+                    timeOut = setTimeout(() => {
+                        _this.showTabs(false)
+                        isShowTab = false
+                    },8765)
+                }
+            }
+            }
+        )
+        //shareBtn
+        shareBtn.forEach(shareItem=>shareItem.onclick = ()=>{
+            navigator.clipboard.writeText("https://dinhduythanh3182.github.io/music-player-tizz/")
+            }
+        )     
+        //Tablet menu
+        openTabletMenuBtn.onclick = ()=>{
+            tabletMenu.classList.add("active")
+            console.log(123);
+        }
+        closeTabletMenuBtn.onclick = ()=>{
+            tabletMenu.classList.remove("active")
+        }
+        // 
+       
         mainAudio.onended = ()=>{
             if(_this.isRepeat){
                 _this.loadCurrentSong()
-                console.log("end")
                 mainAudio.play()
             }
             else{
@@ -217,13 +297,7 @@ const playerMusic = {
                 iterations: 1,
             })
 
-        window.onclick = (e)=>{
-            if(e.target.closest(".menu")!==$(".menu")){
-                if($(".menu-item.active")){
-                    $(".menu-item.active").classList.remove("active")
-                }
-            }
-        }
+      
 
         menuItem.forEach((item,index)=>(
             item.onclick = function(e){
@@ -274,6 +348,7 @@ const playerMusic = {
         }
         volumeFire.oninput = (e)=>{
             const nextEle = e.target.nextElementSibling   
+            volumeFireIcon.style.fill = "var(--main-color)"   
             if(volumeFire.value<5){
                 nextEle.style.width = 24 +'px'
             }   
@@ -286,11 +361,13 @@ const playerMusic = {
             fireAudio.play()
             fireAudio.volume = volumeFire.value /100
             if(volumeFire.value==0){
+                volumeFireIcon.style.fill = "#555555"   
                 fireAudio.pause()
             }
         }
         volumeTraffic.oninput = (e)=>{
             const nextEle = e.target.nextElementSibling   
+            volumeTrafficIcon.style.fill = "var(--main-color)"   
             if(volumeTraffic.value<5){
                 nextEle.style.width = 24 +'px'
             }   
@@ -300,22 +377,23 @@ const playerMusic = {
             else{
                 nextEle.style.width = volumeTraffic.offsetWidth * volumeTraffic.value /100 + "px" 
             }
-            trafficAudio.play()
-            trafficAudio.volume = volumeTraffic.value /100
+            fireAudio.play()
+            fireAudio.volume = volumeTraffic.value /100
             if(volumeTraffic.value==0){
-                trafficAudio.pause()
+                volumeTrafficIcon.style.fill = "#555555"   
+                fireAudio.pause()
             }
         }
         volumeRain.oninput = (e)=>{
             const nextEle = e.target.nextElementSibling   
-            
             if(volumeRain.value>0){
                 _this.isRainning = true
+                volumeRainIcon.style.fill = "var(--main-color)"   
                 if(volumeRain.value<5&&volumeRain.value>0){
                     nextEle.style.width = 24 +'px'
                 }   
                 else if(volumeRain.value>=5&&volumeRain.value<40){
-                    nextEle.style.width = volumeRain.offsetWidth * volumeRain.value /100 +12+ "px"     
+                    nextEle.style.width = volumeRain.offsetWidth * volumeRain.value /100 +12+ "px"  
                 }    
                 else{
                     nextEle.style.width = volumeRain.offsetWidth * volumeRain.value /100 + "px" 
@@ -331,6 +409,7 @@ const playerMusic = {
                 rainAudio.volume = volumeRain.value /100
             }
             if(volumeRain.value==0){
+                volumeRainIcon.style.fill = "#555555"   
                 _this.isRainning = false
                 rainAudio.pause()
                 if(this.isNight){
@@ -340,7 +419,7 @@ const playerMusic = {
                 else if(this.isNight==false){
                     backGround.classList.remove("daytime-rain")
                 }
-                nextEle.style.width = volumeRain.offsetWidth * volumeRain.value /100 + "px"      
+                nextEle.style.width = 24 +'px'
             }
         }
         mixMode.onclick = () => {
