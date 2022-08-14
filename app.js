@@ -46,12 +46,13 @@ const volumeRain = $(".rain")
 const volumeRainIcon = $(".rain-icon  > path")
 
 const contactPopup = $(".contact-popup")
-const contactNav  = $(".item-contact")
+const contactNav  = $$(".item-contact")
 const contactPopupClose = $(".close-contact-popup")
 
-const tabletMenu = $(".tablet-menu")
+const responsiveMenu = $(".responsive-menu")
 const closeTabletMenuBtn = $(".close-tablet-menu")
 const openTabletMenuBtn  = $(".handle-phone")
+
 
 const playerMusic = {
     currentIndex :0,
@@ -238,11 +239,11 @@ const playerMusic = {
         )     
         //Tablet menu
         openTabletMenuBtn.onclick = ()=>{
-            tabletMenu.classList.add("active")
+            responsiveMenu.classList.add("active")
             console.log(123);
         }
         closeTabletMenuBtn.onclick = ()=>{
-            tabletMenu.classList.remove("active")
+            responsiveMenu.classList.remove("active")
         }
         // 
        
@@ -255,10 +256,12 @@ const playerMusic = {
                 nextBtn.click()
             }
         }
-        contactNav.onclick = ()=>{
+        contactNav.forEach(item=>item.onclick = ()=>{
             openModal.play()
             contactPopup.classList.toggle("active")
-        }
+            responsiveMenu.classList.remove("active")
+            } 
+        )
         contactPopupClose.onclick = ()=>{
             closeModal.play()
             setTimeout(()=>{

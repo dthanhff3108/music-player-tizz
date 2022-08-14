@@ -35,8 +35,16 @@ body {
     
 }
 /* back-ground */
-.light{
+.background{
     position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index:-800;
+ }
+.light{
+    position: fixed;
     top: 0;
     right: 0;
     left: 0;
@@ -76,15 +84,7 @@ body {
     display: none;
 }
 
-.background{
-   position: absolute;
-   top: 0;
-   left: 0;
-   bottom: 0;
-   right: 0;
-   z-index:-800;
 
-}
 
 /* Load - background */
 
@@ -149,6 +149,7 @@ source{
 .handle{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-right: 42px;
 }
 .handle-pc, .handle-phone{
@@ -156,11 +157,14 @@ source{
     align-items: center;
     justify-content:space-between;
 }
+.handle-pc-item{
+    margin-left: 40px;
+}
 .handle-phone{
     display:none;
     position:relative;
 }
-.tablet-menu{
+.responsive-menu{
     position:fixed;
     top:0;
     right: 0;
@@ -172,15 +176,21 @@ source{
     z-index:100;
     transition: all 0.25s linear;
 }
-.tablet-menu.active{  
+.responsive-menu.active{  
     width: 330px;
 }
-.tablet-menu-list{
+.tablet-menu{
+    display:none;
+}
+.phone-menu{
+    display: none;
+}
+.res-menu-list{
     padding: 50px 0 20px 50px;
     display : flex;
     flex-direction: column;
 }
-.tablet-menu-item{
+.res-menu-item{
     display : flex;
     align-items: center;
     height: 40px;
@@ -195,10 +205,10 @@ source{
     cursor: pointer;
     transition: all 0.2s linear;
 }
-.tablet-menu-item:hover {
+.res-menu-item:hover {
     box-shadow: -2px 3px 10px white;
 }
-.tablet-menu-item i {
+.res-menu-item i {
     width: 30px;
 }
 .close-tablet-menu{
@@ -214,20 +224,12 @@ source{
     color: var(--main-color);
 }
 //
-.handle-phone {
-    
-}
+
 .handle-item{
     margin: 18px;
 }
 // Share button
-.handle-item.share{
-    position: relative;
-}
-.handle-item.share:hover:after {
-    display: block;
-}
-.handle-item.share:active {
+.handle-btn.share:active {
     background-color:rgba(255,255,255,0.1);
 }
 @keyframes showTooltip{
@@ -241,12 +243,15 @@ source{
 //
 .full-scr{
     transition: all 0.3s linear;
+    display: flex;
+    align-items: center;
+    color: white;
 }
-.full-scr > svg > rect{
-   fill: transparent;
+.full-scr > i{
+    color: white;
 }
 .full-scr:hover{
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 .handle button{
@@ -272,6 +277,9 @@ source{
 }
 .handle button:hover{
     background-color:rgba(0,0,0,0.3);
+}
+.switch-mode{
+    margin-left: 20px
 }
 .switch-mode label{
     display: block;
@@ -455,9 +463,9 @@ source{
     transition: all 0.3s ease-in-out
 }
 .option-1  p{
-    font-size:20px;
+    font-size:16px;
     font-weight:600;
-    margin: 0 0 20px 6px
+    margin: 0 0 15px 6px
 }
 
 .music-type{
@@ -475,6 +483,7 @@ source{
     width:84px;
     height:84px;
     margin: 0 6px 30px;
+    cursor: no-drop;
 }
 .type i{
     font-size:20px;
@@ -606,18 +615,15 @@ source{
 .rain::-webkit-slider-thumb{
     position: relative;
 }
-.rain-icon{
-
-}
-
-
 
 .mix-mode{
     background-color: rgba(10, 10, 10, 0.5);
     flex: 1;
+    font-size: 14px;
     text-align: center;
     padding: 8px 0;
     border-radius: 15px;
+    cursor: no-drop;
 }
 /* option-2 */
 .option-2{
@@ -625,7 +631,9 @@ source{
     top: -50px;
     right: 100%;
     border-radius: 15px;
+
     display: none;
+    /* cursor: no-drop; */
 }
 
 /* option-3 */
@@ -642,7 +650,7 @@ source{
     display: none;
 }
 .option-3 p{
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
     margin: 0 0 12px 6px;
 }

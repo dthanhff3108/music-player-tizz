@@ -74,3 +74,84 @@
     font-weight: 600;
     cursor: pointer;
 }
+@media screen and (max-width: 650px){
+    .contact-main{
+        background-color: rgb(58, 58, 58);
+        width: 60%;
+        height: 28%;
+        padding: 20px 10px;
+        border-radius: 12px;
+        position:absolute;
+        top: 20%;
+    }
+   
+    .contact-main p:nth-child(1){
+        color: white;
+        font-family: 'Itim', cursive;
+        font-weight:600;
+        font-size: 12px;
+    }
+    .contact-main p:nth-child(2){
+        color: white;
+        font-family: 'Itim', cursive;
+        font-weight:600;
+        font-size: 8px;
+        
+    }
+    .contact-main p:nth-child(3){
+        color: white;
+        font-family: 'Itim', cursive;
+        font-weight:600;
+        font-size: 8px;
+    }
+    .contact-me{
+        display: flex;
+        flex-direction: column;
+        font-size: 8px;
+    }
+    .contact-me i{
+        font-size:14px;
+        color:#f3a952 ;
+        margin: 8px;
+    }
+    .close-contact-popup{
+        font-family: 'Itim', cursive;
+        position: absolute;
+        top: 6px;
+        right: 18px;
+        color: white;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+}
+@media screen and (min-width: 651px) and (max-width: 849px) {
+    .contact-main{
+        background-color: rgb(58, 58, 58);
+        width: 62%;
+        height: 54%;
+        padding: 20px;
+        border-radius: 12px;
+        position:relative;
+    }
+    .contact-main p:nth-child(1){
+        color: white;
+        font-family: 'Itim', cursive;
+        font-weight:600;
+        font-size: 15px;
+    }
+    .contact-main p:nth-child(2){
+        color: white;
+        font-family: 'Itim', cursive;
+        font-weight:600;
+        font-size: 12px;
+        
+    }
+    .contact-main p:nth-child(3){
+        color: white;
+        font-family: 'Itim', cursive;
+        font-weight:600;
+        font-size: 12px;
+    }
+  
+}

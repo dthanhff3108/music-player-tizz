@@ -10,28 +10,56 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/loading.css">
     <link rel="stylesheet" href="./css/contact-popup.css">
+    <link rel="stylesheet" href="./css/loading.css">
     <link rel="stylesheet" href="./css/responsive.css">
 </head>
 <body>
     <div class="app">
         <!-- Tablet-Phone-Menu-Responsive -->
-        <div class="tablet-menu">
-            <ul class="tablet-menu-list">
-                <li class="tablet-menu-item">
-                    <i class="fa-solid fa-user"></i>
-                    <p>Login</p>
-                </li>
-                <li class="tablet-menu-item share">
-                    <i class="fa-solid fa-share-nodes"></i>
-                    <p >Share</p>
-                </li>
-            </ul>
+        <div class="responsive-menu">
             <span class="close-tablet-menu">
                 <i class="fa-solid fa-xmark"></i>
             </span>
+            <div class="tablet-menu">
+                <ul class="res-menu-list">
+                    <li class="res-menu-item">
+                        <i class="fa-solid fa-user"></i>
+                        <p>Login</p>
+                    </li>
+                    <li class="res-menu-item share">
+                        <i class="fa-solid fa-share-nodes"></i>
+                        <p >Share</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="phone-menu">
+                <ul class="res-menu-list">
+                    <li class="res-menu-item">
+                        <i class="fa-solid fa-user"></i>
+                        <p>Login</p>
+                    </li>
+                    <li class="res-menu-item share">
+                        <i class="fa-solid fa-share-nodes"></i>
+                        <p >Share</p>
+                    </li>
+                    <li class="res-menu-item share item-contact">
+                        <i class="fa-thin fa-question"></i>
+                        <p >How it works</p>
+                    </li>
+                    <li class="res-menu-item share item-contact">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        <p >Upgrade</p>
+                    </li>
+                    <li class="res-menu-item share item-contact">
+                        <i class="fa-solid fa-address-card"></i>
+                        <p >Contact us</p>
+                    </li>
+                    
+                </ul>
+            </div>
         </div>
+         <!--END - Tablet-Phone-Menu-Responsive -->
         <div class="background">
             <div class="light ">
                 <video playsinline autoplay muted loop>
@@ -113,14 +141,10 @@
                                     More
                                 </p>                          
                             </li>
-                            <li class="nav-item">
-                                <p class="item-text">
-                                    Merch
-                                </p>                          
-                            </li>
+                            
                         </ul>
                     </div>
-                    <div class="handle-item switch-mode">
+                    <div class="switch-mode">
                         <label for="mode" >
                             <input id="mode" type="checkbox">
                             <span class="slider"></span>
@@ -128,17 +152,14 @@
                     </div>
                     <div class="handle">
                         <div class="handle-pc">
-                            <div class="full-scr">
-                                <svg  xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                                    <rect width="35" height="35" rx="8" fill="#121212" fill-opacity="0.8"></rect>
-                                    <path d="M12.1429 19.6429H10V25H15.3571V22.8571H12.1429V19.6429ZM10 15.3571H12.1429V12.1429H15.3571V10H10V15.3571ZM22.8571 22.8571H19.6429V25H25V19.6429H22.8571V22.8571ZM19.6429 10V12.1429H22.8571V15.3571H25V10H19.6429Z" fill="white"></path>
-                                </svg>
+                            <div class="handle-pc-item full-scr">
+                                <i class="fas fa-expand"></i>
                             </div>
-                            <button class="handle-item">
+                            <button class="handle-pc-item handle-btn">
                                 <i class="fa-solid fa-user"></i>
                                 <span>Login</span>
                             </button>
-                            <button class="handle-item share">
+                            <button class="handle-pc-item handle-btn share">
                                 <i class="fa-solid fa-share-nodes"></i>
                                <span> Share</span>
                             </button>
@@ -146,7 +167,6 @@
                         <div class="handle-phone">
                             <i class="fas fa-bars"></i>
                         </div>
-                       
                     </div>
                 </div>
             </div>

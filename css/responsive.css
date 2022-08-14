@@ -6,8 +6,23 @@
         display: none;
     }
     .logo{
-        width: 50%;
+        width: 25%;
         height: 50%;
+    }
+    .switch-mode{
+        margin-left:0;
+    }
+    .handle-pc{
+        display: none;
+    }
+    .handle-phone{
+        display: flex;
+        align-items:center;
+        font-size: 16px;
+        color : white;
+        padding:6px 8px;
+        background-color : rgb(15 15 15 / 0.4);
+        border-radius: 4px;
     }
     .author p {
         font-weight: 550;
@@ -32,7 +47,7 @@
     .menu{
         right: 6%;
     }
-    .tablet-menu.active{
+    .responsive-menu.active{
         display: block;
         width: 250px;
     }
@@ -98,8 +113,29 @@
         height: 130px;
         border-radius: 18px;
     }
+    video{
+        object-position: 8% 0% ;
+    }
+    .tablet-menu{
+        display:none;
+    }
+    .phone-menu{
+        display: block;
+    }
+    // Modal contact
+    .contact-main{
+        background-color: rgb(58, 58, 58);
+        width: 50%;
+        height: 70%;
+        padding: 20px;
+        border-radius: 12px;
+        font-size:14px !important;
+        position:relative;
+    }
+    
 }
-@media screen and (max-width: 829px)  {
+
+@media screen and (min-width: 651px) and (max-width: 849px)  {
     .handle-pc{
         display: none;
     }
@@ -115,18 +151,44 @@
     .item-text{
         font-size: 14px; 
     }
+    .responsive-menu{
+        display: block;
+    }
     .tablet-menu{
         display: block;
     }
+    .phone-menu{
+        display: none;
+    }
+    
+    .handle{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-right: 32px;
+    }
+    .switch-mode{
+        margin-left: 0;
+    }
+    .logo{
+        width: 100px;
+        height: 100px;
+        margin-left: -10px;
+    }
 }
-@media screen and (max-width: 1024px) and (min-width: 830px) {
+@media screen and (max-width: 1024px) and (min-width: 850px) {
     .item-text{
         font-size: 14px; 
     }
     .handle button{
         font-size:8px;
     }
-    .handle-item{
-        margin: 14px;
+    .handle-pc-item{
+        margin-left: 20px;
     }
+    .handle{
+        margin-right: 36px;
+    }
+
 }
+
