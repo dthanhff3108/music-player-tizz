@@ -756,3 +756,9 @@ source{
     background-color: rgba(255, 255, 255, 0.99);   
     mix-blend-mode: difference;
 }
+
+@media screen and (max-width: 650px){
+    .responsive-menu.active{
+        width:240px;
+    }
+}

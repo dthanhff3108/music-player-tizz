@@ -47,9 +47,9 @@
     .menu{
         right: 6%;
     }
-    .responsive-menu.active{
+    .responsive-menu{
         display: block;
-        width: 250px;
+        transition: all 0.25s linear;
     }
     .options{
         padding: 12px 10px;
@@ -132,7 +132,6 @@
         font-size:14px !important;
         position:relative;
     }
-    
 }
 
 @media screen and (min-width: 651px) and (max-width: 849px)  {
