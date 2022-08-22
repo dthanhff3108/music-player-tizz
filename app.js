@@ -1,3 +1,6 @@
+import {appFirebase ,db} from './firebaseConfig.js'
+import { collection, getDocs, query} from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js'
+
 const $ = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
 
@@ -61,34 +64,41 @@ const playerMusic = {
     isNight : false,
     isRepeat : false,
     isShuffle : false,
-    songs : [
+    songs : [],
+    listSongsDefault : [
         {
             name:"lofi-1",
-            img : "https://i.ibb.co/vw24pz6/lifted.png",
+            thumb : "https://i.ibb.co/vw24pz6/lifted.png",
             src : "./music/lofi-1.mp3"
         },
         {
             name  :"lofi-car",
-            img: "https://i.ibb.co/SQrYBBc/clovr.png",
+            thumb: "https://i.ibb.co/SQrYBBc/clovr.png",
             src : "./music/lofi-car.mp3"
         },
         {
             name: " lofi-study",
-            img: "	https://i.ibb.co/7pXZ8gF/space.png",
+            thumb: "https://i.ibb.co/7pXZ8gF/space.png",
             src : "./music/lofi-study.mp3"
         },
         {
             name: " chim sau",
-            img: "https://yt3.ggpht.com/ytc/AKedOLQfWG2jyoT5wok4VxGm4XTKnhH4p-e6MUVbHKc_=s176-c-k-c0x00ffffff-no-rj",
+            thumb: "https://yt3.ggpht.com/ytc/AKedOLQfWG2jyoT5wok4VxGm4XTKnhH4p-e6MUVbHKc_=s176-c-k-c0x00ffffff-no-rj",
             src : "./music/chimsau.mp3"
         },
         {
             name: " lofi-study",
-            img: "	https://yt3.ggpht.com/mTwSVZXUOwAIzrSInjYBS0EHkl1Lmm2ya9qVy-VkkQ7OjcZoLFdbANN9571zgIPDnnE-VaeL=s88-c-k-c0x00ffffff-no-nd-rj",
+            thumb: "https://yt3.ggpht.com/mTwSVZXUOwAIzrSInjYBS0EHkl1Lmm2ya9qVy-VkkQ7OjcZoLFdbANN9571zgIPDnnE-VaeL=s88-c-k-c0x00ffffff-no-nd-rj",
             src : "./music/river.mp3"
         },
     ],
-    
+    async getAllMusic(db) {
+        const colRef = query(collection(db,"music-link"));
+        const querySnapshot = await getDocs(colRef);
+        querySnapshot.forEach(doc=>{
+            this.songs.push(doc.data())
+        })  
+    },
     menuItemActive(e,index){
         const parentLi = e.target.closest("li");
         if(!$(".menu-item.active")){
@@ -114,9 +124,9 @@ const playerMusic = {
         }        
     },
     
-    loadCurrentSong(){
+    async loadCurrentSong(){
        mainAudio.src =this.songs[this.currentIndex].src
-       imgAuthor.src = this.songs[this.currentIndex].img
+       imgAuthor.src = this.songs[this.currentIndex].thumb
     },
     nextSong(){
         if(this.isShuffle){
@@ -197,7 +207,7 @@ const playerMusic = {
         let timeOut
         // Show animation Loading
         window.onload = ()=>{
-            setTimeout(()=>$(".load-background").style.display ="none",000) // fake loading ^.^
+            $(".load-background").style.display ="none"
         }
         window.onclick = (e)=>{
             if(e.target.closest(".menu")!==$(".menu")){
@@ -230,8 +240,7 @@ const playerMusic = {
                     },8765)
                 }
             }
-            }
-        )
+        })
         //shareBtn
         shareBtn.forEach(shareItem=>shareItem.onclick = ()=>{
             navigator.clipboard.writeText("https://dinhduythanh3182.github.io/music-player-tizz/")
@@ -429,10 +438,10 @@ const playerMusic = {
             _this.mixAudio()
         }
     },
-    start(){
-        this.loadCurrentSong()
-        this.handleClick();
-        
+    async start(){
+        this.handleClick()
+        await this.getAllMusic(db)
+        await this.loadCurrentSong()
     }   
 }
 

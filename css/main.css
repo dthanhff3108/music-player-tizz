@@ -655,23 +655,36 @@ source{
     margin: 0 0 12px 6px;
 }
 .set{
+    display: flex;
+    align-items: center;
     margin: 8px ;
     object-fit: contain;
     overflow: hidden;
     width:270px;
     height: 150px;
     border-radius: 18px;
+    position: relative;
 }
-.set:hover{
+.set.active:hover{
     filter: brightness(1.3);
 }
 .set img{
+  
     width:100%;
     height:100%;
     object-fit: cover;
-    filter: brightness(0.5);
+    filter: brightness(0.3);
     overflow: hidden;
     transition: all ease-in 0.5s;
+}
+.set i{
+    position: absolute;
+    font-size: 32px;
+    top: 50%;
+    left: 50%;
+    color: var(--main-color);
+    transform: translate(-50%,-50%);
+    transition: all  0.2s ease-in;
 }
 .set:hover img{
     transform: scale(1.1)

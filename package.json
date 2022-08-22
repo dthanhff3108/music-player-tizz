@@ -1,0 +1,24 @@
+{
+  "name": "dthanhff_lofi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dinhduythanh3182/music-player-tizz.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dinhduythanh3182/music-player-tizz/issues"
+  },
+  "homepage": "https://github.com/dinhduythanh3182/music-player-tizz#readme",
+  "dependencies": {
+    "firebase": "^9.9.3",
+    "webpack": "^5.74.0"
+  },
+  "type": "module"
+}
