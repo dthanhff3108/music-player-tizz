@@ -96,7 +96,7 @@ const playerMusic = {
             src : "./music/river.mp3"
         },
     ],
-    songs : [] ?? listSongsDefault,
+    songs : [] ,
     async getAllMusic(db) {
         const colRef = query(collection(db,"music-link"));
         const querySnapshot = await getDocs(colRef);
