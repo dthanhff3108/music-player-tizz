@@ -204,17 +204,28 @@
                 </div>
             </div>
 
-            <div class="control">         
-                <div class="btn prev-btn">
-                    <img src="./icon/music-icon/prev.svg" class="prev-img" alt="">
+            <div class="control">
+                <div class="control-name">
+                    <span class="name-song"></span>
+                    <div class="artist-container"><span class="name-artist"></span></div>
+                </div>         
+                <div class="control-btn">
+                    <div class="btn prev-btn">
+                        <img src="./icon/music-icon/prev.svg" class="prev-img" alt="">
+                    </div>
+                    <div class="btn play-pause-btn ">
+                        <img src="	./icon/music-icon/play.svg" alt="" class="play-pause-img play-btn" >
+                        <img src="./icon/music-icon/pause.svg" alt="" class="play-pause-img pause-btn " >
+                    </div>
+                    <div class="btn next-btn">
+                       <img src="./icon/music-icon/next.svg" class="next-img" alt="">
+                    </div>
                 </div>
-                <div class="btn play-pause-btn ">
-                    <img src="	./icon/music-icon/play.svg" alt="" class="play-pause-img play-btn" >
-                    <img src="./icon/music-icon/pause.svg" alt="" class="play-pause-img pause-btn " >
+                <div class="control-slider">
+                    <input id="song-range" type="range" value=0 min="0" max="100" step="1">
+                    <label for="song-range" id="range-label"></label>
                 </div>
-                <div class="btn next-btn">
-                   <img src="./icon/music-icon/next.svg" class="next-img" alt="">
-                </div>
+
             </div>
 
             <div class="menu">
@@ -357,6 +368,8 @@
                 <img src="https://i.ibb.co/vw24pz6/lifted.png" alt="">
 
             </div>
+
+
         </div>
     </div>
  

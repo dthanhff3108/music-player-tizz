@@ -27,12 +27,17 @@ const fireAudio = $(".audio-fire")
 const trafficAudio = $(".audio-traffic")
 const rainAudio = $(".audio-rain")
 
-
+const songNameText = $(".name-song")
+const songArtistText = $(".name-artist")
 const playBtn = $(".play-pause-btn")
 const nextBtn = $(".next-btn")
 const prevBtn = $(".prev-btn")
-const mixMode = $(".mix-mode")
+const sliderDuration = $("#song-range")
+const sliderDurationTrack = $("#range-label")
 
+
+
+const mixMode = $(".mix-mode")
 const repeatBtn = $(".repeat-btn")
 const shuffleBtn = $(".shuff-btn")
 
@@ -64,7 +69,6 @@ const playerMusic = {
     isNight : false,
     isRepeat : false,
     isShuffle : false,
-    songs : [],
     listSongsDefault : [
         {
             name:"lofi-1",
@@ -92,6 +96,7 @@ const playerMusic = {
             src : "./music/river.mp3"
         },
     ],
+    songs : [] ?? listSongsDefault,
     async getAllMusic(db) {
         const colRef = query(collection(db,"music-link"));
         const querySnapshot = await getDocs(colRef);
@@ -125,8 +130,10 @@ const playerMusic = {
     },
     
     async loadCurrentSong(){
-       mainAudio.src =this.songs[this.currentIndex].src
-       imgAuthor.src = this.songs[this.currentIndex].thumb
+        mainAudio.src =this.songs[this.currentIndex].src
+        imgAuthor.src = this.songs[this.currentIndex].thumb
+        songNameText.textContent = this.songs[this.currentIndex].name
+        songArtistText.textContent = this.songs[this.currentIndex].singer
     },
     nextSong(){
         if(this.isShuffle){
@@ -219,7 +226,7 @@ const playerMusic = {
         // toggle tab
         window.onmouseover = ((e) =>{
             // Check device type
-                if(document.body.offsetWidth > 650){
+                if(document.body.offsetWidth > 850){
                     if(timeOut){
                         clearTimeout(timeOut)
                     }
@@ -241,7 +248,7 @@ const playerMusic = {
                 }
             }
         })
-        //shareBtn
+        //Share Btn
         shareBtn.forEach(shareItem=>shareItem.onclick = ()=>{
             navigator.clipboard.writeText("https://dinhduythanh3182.github.io/music-player-tizz/")
             }
@@ -249,7 +256,6 @@ const playerMusic = {
         //Tablet menu
         openTabletMenuBtn.onclick = ()=>{
             responsiveMenu.classList.add("active")
-            console.log(123);
         }
         closeTabletMenuBtn.onclick = ()=>{
             responsiveMenu.classList.remove("active")
@@ -291,7 +297,6 @@ const playerMusic = {
                 duration: 200,
                 iterations: 1,
             })
-            
 
         const repeatAnimate = repeatBtn.animate(
             [   {transform: "scale(0.9)"},
@@ -345,6 +350,21 @@ const playerMusic = {
         }
         prevBtn.onclick = ()=>{
             this.prevSong()
+        }
+        // Main Audio
+        mainAudio.ontimeupdate = () => {
+            if(mainAudio.duration){
+                sliderDuration.value = ( mainAudio.currentTime / mainAudio.duration ) * 100
+                sliderDurationTrack.style.width = ( mainAudio.currentTime / mainAudio.duration ) * 100 + '%'
+            }
+        }
+        sliderDuration.oninput = () => {
+            mainAudio.pause()
+            sliderDurationTrack.style.width = sliderDuration.value + '%' 
+            mainAudio.currentTime = (sliderDuration.value * mainAudio.duration) / 100
+            sliderDuration.onmouseup = () => {
+                mainAudio.play()
+            }
         }
         mainAudio.onplay = ()=>{
             this.isPlaying = true

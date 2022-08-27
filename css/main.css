@@ -347,7 +347,8 @@ source{
 .control{
     position:fixed;
     display:flex;
-    bottom: -58px;
+    bottom: 100%;
+    flex-direction: column;
     left: 50%;
     align-items: center;
     transform: translateX(-50%);
@@ -355,14 +356,104 @@ source{
     user-select: none;
     transition : all ease-in 0.3s
 }
+.control-name{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    font-weight: 550;
+    color : rgba(211, 211, 211, 0.8);
+}
+.name-song{
+    display: block;
+    width :0;
+    font-size: 20px;
+    margin-bottom: 8px;
+    overflow: hidden; 
+    border-right: .1em solid var(--main-color); 
+    white-space: nowrap; 
+    margin: 8px auto; 
+    letter-spacing: .15em; 
+    animation: 
+        typing 3.5s steps(40, end) 2s forwards,
+        blink-caret .75s step-end infinite;
+}
+.artist-container{
+    width: fit-content;
+}
+.name-artist{
+    display: block;
+    width :0;
+    overflow: hidden; 
+    border-right: .1em solid var(--main-color);
+    white-space: nowrap; 
+    margin: 0 auto;
+    letter-spacing: .15em; 
+    animation: 
+        typing 2.5s steps(15, end) 2s forwards,
+        blink-caret 1s step-end infinite;
+}
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+}
+/* Control Btn */
+.control-btn{
+    display:flex;
+    align-items: center; 
+}
+.control-slider{
+    margin-top: 20px;
+}
+.control-slider label{
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    display: block;
+    width: 0px;
+    height: 7px;
+    background-color: rgb(0 0 0 / 0.4);
+    border-radius: 4px;
+    box-shadow: -4px 1px 9px black;
+}
+.control-slider input[type=range] {
+    -webkit-appearance: none;
+    width: 300px;
+    position: relative;
+    background-color: transparent;
+ }
 
+.control-slider input[type=range]:focus {
+    outline: none; 
+}
+.control-slider input[type=range]::-webkit-slider-runnable-track {
+    background-color: rgb(255 255 255 / 0.3);
+    height: 6px;
+    border-radius: 4px;
+}
+.control-slider input[type="range"]::-webkit-slider-thumb {
+    width: 15px;
+    height: 10px;
+    border-radius: 4px;
+    border: none;
+    box-shadow: none;
+    -webkit-appearance: none;
+    background-color: var(--main-color);
+    margin-top: -2px;
+    z-index: 99;
+    position: relative;
+    transition: 0.5s all ease;
+ }
 .btn{
-    margin: 0 10px;
+    margin: 0 20px;
 }
-.play-btn{
-    /* width:54px;
-    height:54px; */
-}
+
 .pause-btn{
     display: none;
 }
@@ -750,7 +841,7 @@ source{
 
 .author p {
     font-weight: 550;
-    color : rgba(211, 211, 211, 0.4);
+    color : rgba(211, 211, 211, 0.7);
     margin-right: 10px;
 }
 .author img{
