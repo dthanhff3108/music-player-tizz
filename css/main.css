@@ -128,21 +128,26 @@ source{
     user-select: none;
     z-index: 2;
 }
+.nav{
+    flex:1;
+    padding: 0 10px;
+}
 .nav-list{
     display: flex;
+    justify-content:space-evenly;
     list-style: none;
 }
 .nav-item{
     padding: 10px;
     text-align: center;
-    transition: all 0.2s linear
+    transition: all 0.2s linear;
 }
 .nav-item:hover .item-text{
     transition: all 0.2s linear;
     color: rgb(194, 194, 194);
 }
 .item-text{
-    font-size: 18px;
+    font-size: 22px;
     color: white;  
     font-weight: 600;     
 }
@@ -370,6 +375,7 @@ source{
     font-size: 20px;
     margin-bottom: 8px;
     overflow: hidden; 
+    text-align: center;
     border-right: .1em solid var(--main-color); 
     white-space: nowrap; 
     margin: 8px auto; 
@@ -410,6 +416,7 @@ source{
 }
 .control-slider{
     margin-top: 20px;
+    position: relative;
 }
 .control-slider label{
     position: absolute;
@@ -425,7 +432,6 @@ source{
 .control-slider input[type=range] {
     -webkit-appearance: none;
     width: 300px;
-    position: relative;
     background-color: transparent;
  }
 
